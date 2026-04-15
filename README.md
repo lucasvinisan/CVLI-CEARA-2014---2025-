@@ -16,4 +16,6 @@
 
 ✅ O Exponential Smoothing apresentou melhor performance para este problema.
 
+O modelo Exponential Smoothing apresentou MAPE de 6.72%, com erro médio de ~18 homicidios a cada mês. Por outro lado, o modelo SARIMA mostrou-se inferior, apresentando um MAPE de 13.84 e um erro médio de ~38 homcídios por mês. Portanto, o modelo Exponential Smoothing foi o que apresentou o melhor desempenho no estudo, com acuracia maior e uma melhor aderência aos dados.
+
 ## ▶️ Como reproduzir
