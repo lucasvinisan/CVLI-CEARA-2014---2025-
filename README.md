@@ -4,8 +4,12 @@
 
 | Arquivo | Descrição |
 |---------|-----------|
+|Dasboard | Análise Descritiva com sobre os CVLI ocorridos no Ceará (2014 - 2025) |
+|Dados | Base de Dados utilizada para o estudo |
+|Relatório | Um arquivo PDF com as informações e gráficos relevantes |
 | `01_EDA_Exponential_Smoothing.ipynb` | Análise exploratória + Modelo Holt-Winters |
 | `02_SARIMA.ipynb` | Modelo SARIMA |
+
 
 ## 📊 Resultados
 
