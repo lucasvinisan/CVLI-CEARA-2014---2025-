@@ -1,4 +1,4 @@
-# Previsão de CVLI - Ceará (2014-2025)
+# Previsão de CVLI - Ceará (2026-2027)
 
 ## 📁 Estrutura do Projeto
 
