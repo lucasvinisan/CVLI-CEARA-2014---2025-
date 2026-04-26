@@ -13,10 +13,10 @@
 
 - Distribuição dos Homicidios Ceará (2014 - 2015) 
 
-![Homcidios_Ceara](img\Homicidios_ceara(2014-2024).jpeg)
+![Homcidios_Ceara](img/Homicidios_ceara(2014-2024).jpeg)
 
 - Decomposição da serie Temporal
-![Serie_Temporal](img\Serie Temporal.jpeg)
+![Serie_Temporal](img/Serie_Temporal.jpeg)
 
 
 ## 📊 Resultados
