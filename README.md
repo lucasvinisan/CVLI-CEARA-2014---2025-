@@ -11,6 +11,14 @@
 | `02_SARIMA.ipynb` | Modelo SARIMA |
 
 
+- Distribuição dos Homicidios Ceará (2014 - 2015) 
+
+![Homcidios_Ceara](img\Homicidios_ceara(2014-2024).jpeg)
+
+- Decomposição da serie Temporal
+![Serie_Temporal](img\Serie Temporal.jpeg)
+
+
 ## 📊 Resultados
 
 | Modelo                |  MAPE  |  MAE  | LB_STAT(Lag 10) | LB_pVALUE     |
