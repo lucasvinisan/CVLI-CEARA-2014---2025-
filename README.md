@@ -6,9 +6,9 @@
 |---------|-----------|
 |Dashboard | Análise Descritiva dos CVLI ocorridos no Ceará (2014 - 2025) |
 |Dados | Base de Dados utilizada para o estudo |
-|Relatório | Um arquivo PDF com as informações e gráficos relevantes |
-| `01_EDA_Exponential_Smoothing.ipynb` | Análise exploratória + Modelo Holt-Winters |
-| `02_SARIMA.ipynb` | Modelo SARIMA |
+| Img | Imagens dos plots dos modelos para análise|
+| `Exponential_Smoothing.py` | Análise exploratória + Modelo Holt-Winters |
+| `SARIMA.py` | Modelo SARIMA |
 
 
 - Distribuição dos Homicidios Ceará (2014 - 2015) 
