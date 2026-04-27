@@ -2,21 +2,21 @@
 
 ## 📄 Resumo
     
-- **problema:** As altas taxas de crimes são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Partindo desse pressuposto, como criar um estudo de analise preditiva e descritiva que evidenciam o comportamento desses números nos últimos 12 anos no estado, com a finalidade obter informações relevantes acerca dessa problemática. 
+- **problema:** As altas taxas de crimes são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Por conta disso, decidi reaalizar  um estudo utlizando analise preditiva e descritiva sobre os CVLI, com  a finalidade de compreender o comportamento desses números nos últimos 12 anos no estado. 
 
-- **Solução:** foi realizar um estudo descritivo sobre as informações dos dados acumulados dos CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 a 2025. Além disso, foi implemnatdos agoritmos preditivos, com o intuito de obter possíveis cenários de valores acumulados de CVLI nos anos de 2026 e 2027 no Ceará. 
+- **Solução:** foi realizar um estudo descritivo sobre os dados acumulados dos CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 a 2025. Além disso, foi implemnatdos agoritmos preditivos, com o intuito de obter possíveis cenários de valores acumulados de CVLI nos anos de 2026 e 2027 no Ceará. 
 
 - **Impacto:** O estudo identificou tendência de queda nos números de assassinatos no estado para os próximos anos, mas com números preocupantes que merecem atenção do poder público. 
 
 ## 📋 Introdução e Contextualização
 
-- **Objetivo:** O principal objetivo do estudo era obter informações relevantes sobre os números de CVLI ocorridos no estado do Ceará. Informações como os meses com maiores ocorrência de assassinatos, a fim de obter informações relevantes sobre essa temática relevante para a Secretária de Segurança Pública do estado e, também, para todos os contribuintes. 
+- **Objetivo:** O principal objetivo do estudo era obter informações relevantes sobre os números de CVLI ocorridos no estado do Ceará. O número assassinatos ocorridos, a fim de obter insigts relevantes sobre essa temática relevante para a Segurança Pública do estado. 
 
 - **Metodologia:** Na análise preditiva, as ferramentas utilizadas no estudo foram a linaguagem de programaçãO Python, a fim de implementar a analise exploratório e a construção dos modelos preditivos Holt-Winters e Sarima.  Para a análise descritiva foram utilizadas as ferramentas Tableau para construção e visualização do dashboard, o python para extração e tratamento dos dados e excel para visualização da base de dados.  
 
 ## 🎲 Coleta de Dados
 
-- **Fonte:** Os dados foram coletados através do site da secretária de segurança pública do estado do Ceará, onde os dados foram coletados e inseridos em uma planilha excel. Adicionalmente, como as informações estavam completas e não continham dados faltantes, então não foram necessários realizações de tratamento de campos nulos ou dados incompatíveis. As informações estavam distribuídas entre o mês de ocorrência dos CVLI e o gênero da vítima do crime (Feminino ou Masculino) com 144 campos representam cada mês dos 12 anos utilizados para o estudo (2014 - 2025).
+- **Fonte:** Os dados foram coletados através do site da secretária de segurança pública do estado do Ceará. Adicionalmente, como as informações estavam completas e não continham dados faltantes, não foi necessário realizar tratamento de campos nulos ou de dados incompatíveis. As informações na base de dados está distribuída entre os meses de janeiro de 2014 a dezembro de 2025, totaizando 144 registros ao longo de 12 anos. Além dos indices totais, a base de dados detalha a distribuição de CVLI por gêneros (Feminino e Masculino).
 
 ## 📁 Estrutura do Projeto
 
@@ -35,7 +35,7 @@
 
 ![Homcidios_Ceara](img/Homicidios_ceara(2014-2024).jpeg)
 
-A base de dados é composta por 144 campos representando todos os meses dos 12 anos utilizados para o estudo (2014 - 2025). 
+A base de dados é composta por 144 registros representando todos os meses dos 12 anos utilizados para o estudo (2014 - 2025). 
 
 ### Decomposição da Série Temporal
 
