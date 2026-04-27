@@ -2,7 +2,7 @@
 
 ## 📄 Resumo
     
-- **problema:** As altas taxas de crimes são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Partindo desse pressuposto, como criar um estudo de analise preditiva e descritiva que evidenciam o comportamento desses números nos últimos 12 anos no estado, com a finalidade obter informações relevantes acerca desse problemática. 
+- **problema:** As altas taxas de crimes são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Partindo desse pressuposto, como criar um estudo de analise preditiva e descritiva que evidenciam o comportamento desses números nos últimos 12 anos no estado, com a finalidade obter informações relevantes acerca dessa problemática. 
 
 - **Solução:** foi realizar um estudo descritivo sobre as informações dos dados acumulados dos CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 a 2025. Além disso, foi implemnatdos agoritmos preditivos, com o intuito de obter possíveis cenários de valores acumulados de CVLI nos anos de 2026 e 2027 no Ceará. 
 
@@ -31,7 +31,6 @@
 
 ## 🔭  Análise Exploratório de Dados
 
-<<<<<<< HEAD
 ### Distribuição dos Homicidios Ceará (2014 - 2015) 
 
 ![Homcidios_Ceara](img/Homicidios_ceara(2014-2024).jpeg)
