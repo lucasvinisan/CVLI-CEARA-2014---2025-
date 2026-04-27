@@ -67,13 +67,6 @@ Nos anos seguintes houve queda acentuada nos números de CVLI até o mês 65 (An
 - Aleatoriedade: a maioria dos pontos concentra-se em torno de zero, sugerindo que o modelo de decomposição capturou bem os padrões (tendência e sazonalidade) da série. Os resíduos aparentam ser aleatórios, sem viés evidente.  
 
 - Interpretação: Outliers (Pontos fora da curva) observa um outliers considerável no mês 72 (ano de 2020). Neste ano houve uma crise policial, onde delegacias foram fechadas e parte da força policial do estado cruzou os braços e não foram as ruas. Eventos extraordinários como esse não são capturados pelos componentes de tendência e sazonalidade.
-=======
-![Homcidios_Ceara](img/Homicidios_ceara(2014-2024).jpeg)
-
-- Decomposição da serie Temporal
-![Serie_Temporal](img/Serie_Temporal.jpeg)
->>>>>>> d42ac39f588b39dc2060b18477ec52e0c59a1321
-
 
 ## 📊 Resultados
 
