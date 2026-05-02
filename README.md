@@ -18,7 +18,7 @@
 
 ## 🎲 Coleta de Dados
 
-- **Fonte:** Os dados foram obtidos por meio do site da Secretaria de Segurança Pública do Estado do Ceará e organizados em uma planilha do Excel. Como as informações estavam completas, não foi necessário realizar o tratamento de campos nulos ou dados faltantes. Os dados estão distribuídos por mês de ocorrência e gênero da vítima (Feminino ou Masculino), totalizando 144 registros que representam cada mês dos 12 anos analisados no estudo (2014 a 2025).
+- **Fonte:** Os dados foram obtidos por meio do site da Secretaria de Segurança Pública do Estado do Ceará e organizados em uma planilha do tipo `.csv`. Como as informações estavam completas, não foi necessário realizar o tratamento de campos nulos ou dados faltantes. Os dados estão distribuídos por mês de ocorrência e gênero da vítima (Feminino ou Masculino), totalizando 144 registros que representam cada mês dos 12 anos analisados no estudo (2014 a 2025).
 
 ## 📁 Estrutura do Projeto
 
