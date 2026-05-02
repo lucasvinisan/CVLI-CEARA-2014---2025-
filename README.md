@@ -12,7 +12,7 @@
 
 ## 📋 Introdução e Contextualização
 
-- **Objetivo:** O objetivo principal deste estudo é extrair insights estratégicos sobre os índices de CVLI no estado do Ceará. A análise identifica padrões, como os meses com maior incidência de crimes, visando fornecer subsídios fundamentais tanto para a Secretaria de Segurança Pública quanto para a sociedade civil."
+- **Objetivo:** O objetivo principal deste estudo é extrair insights estratégicos sobre os índices de CVLI no estado do Ceará. A análise identifica padrões, como os meses com maior incidência de crimes, visando fornecer subsídios fundamentais tanto para a Secretaria de Segurança Pública quanto para a sociedade civil.
 
 - **Metodologia:** Na análise preditiva, as ferramentas utilizadas foram a linguagem de programação Python, empregada na análise exploratória e na construção dos modelos preditivos SARIMA e (). Para a análise descritiva, utilizou-se o Tableau para a criação e visualização do dashboard, o Python para extração e tratamento dos dados, e o Excel para a visualização da base de dados.  
 
