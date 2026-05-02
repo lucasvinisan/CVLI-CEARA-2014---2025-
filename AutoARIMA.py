@@ -36,18 +36,18 @@ grafico.decomposicao_aditivo(df)
 #Saber se os dado têm uma média e  uma variância constantes 
 resultado = adfuller(df['CVLI'])
 
-print('Estatistoca ADF: ', resultado[0]) #Quanto mais negativo mais estácionário é a série
+print('Estatistica ADF: ', resultado[0]) #Quanto mais negativo mais estácionário é a série
 
 print('p-valor: ', resultado[1]) # > 0.05 então a série não é tecnicamente estácionária (Existe tencia de queda ou subida)
 
-print("Tornando a série estácionária")
+print("Tornando a série estacionária")
 
 #Como a serie é não estácionária, então foi aplicado a diferenciação para tornara a série estácionária  
 # Garantindo a estacionaridade da Série -------|
 df_diff = df['CVLI'].diff().dropna()  #Aplicando a diferenciação 
 resultado_adf = adfuller(df_diff)
 
-print('Estatistoca ADF: ', resultado_adf[0]) #Quanto mais negativo mais estácionário é a série
+print('Estatistica ADF: ', resultado_adf[0]) #Quanto mais negativo mais estácionário é a série
 
 print('p-valor: ', resultado_adf[1]) # > 0.05 então a série não é tecnicamente estácionária (Existe tencia de queda ou subida)
 
