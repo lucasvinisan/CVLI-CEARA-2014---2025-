@@ -101,6 +101,13 @@ Modelo escolhido:
 
 Um atenção para o modelo é o ponto 60 observado no gráfico 1 (possivelmente ano de 2019 - ano de motim da policia militar no estado do Ceará). Fora isso, o modelo está bem ajustado. 
 
+### Treinamento 
+
+Foi realzzado uma divisão da base de dados para treinamento e teste como evidência a imagem abaixo. 
+ 
+![divisao_tes_trein](img/Treino_teste.png)
+
+
 
 ### Validação do Modelo (Previsões 2024 - 2025)
 ![Validacao](img/Validacao.jpeg)
