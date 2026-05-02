@@ -68,10 +68,10 @@ modelo = pm.auto_arima(
                         trace = True, 
                         error_action='ignore', 
                         suppress_warnings = True, 
-                        stepwise = True #Não itera sobre todas as combinações possiveis do Arima 
+                        stepwise = True 
 )
 
- 
+ #Não itera sobre todas as combinações possiveis do Arima 
 print(modelo)
 #ARIMA(p, d,, q)
 '''
@@ -91,7 +91,6 @@ plt.show()
 
 # |--------------- Validação -----------------------|
 
-#Seprando treino de teste 
 train = df['CVLI'].loc['2014-01-01':'2023-12-01']
 test = df['CVLI'].loc['2024-01-01':]
 
