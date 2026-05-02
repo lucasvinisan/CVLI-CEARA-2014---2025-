@@ -39,14 +39,14 @@
 
 A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de CVLI são divididos pelas variáveis M (Masculino) e F (Feminino). Como evidenciado no Gráfico 3, a série histórica é composta, majoritariamente, por vítimas do sexo masculino; nota-se que o comportamento da curva de CVLI é quase integralmente ditado pela variação dos dados de homens, dada a baixa representatividade estatística das ocorrências femininas no montante total.
 
-### Decomposição da Série Temporal
+### Decomposição da Série Temporal 
 
 ![Serie_Temporal](img/Serie_Temporal.jpeg)
 
-- Séries temporais são conjuntos de registros de uma variável ordenados no tempo. O objetivo de utilizar essa análise é identificar padrões não aleatórios na série para realizar previsões que auxiliem na tomada de decisão. A decomposição da série auxilia na identificação dos componentes que atuam sobre esse conjunto de dados.
+*Interpretação dos Gráficos Obtidos*
 
-**CVLI - (Crimes Violentos Letais e Intencionais) estado do Ceará 2014***
-
+**Distribuição**
+  
 - VARIAÇÃO: Os dados de CVLI iniciam com o patamar um pouco superior a 400 no ano de 2014, seguido de algumas oscilações. Posteriormente, observar-se uma redução drástica entre os meses finais de 2018 e iniciais de 2019. O ano  2017 apresentou o maior valor observado de CVLI além de ser o ano com maior valor acumulado de homicídios no estado do Ceará. Por outro lado, o ano de 2019 apresentou o menor valor  observado na série, com meses apresentando dados inferiores a 200 CVLIs.
 
 - Volatilidade: Observa-se fortes oscilações, com picos muitos acentuados e reduções drásticas em alguns períodos da série. Essas flutuações podem ter sido influenciadas por eventos externos como crises na segurança pública, conflitos entre facções criminosas e entre outros eventos externos.  
