@@ -8,7 +8,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 
-dataFrame = pd.read_csv('Dados\Serie_homicidios_Ceara_2014-2025.csv', sep=';')
+dataFrame = pd.read_csv('Dados/CVLI_CEARA.csv', sep=';')
 
 
 dataFrame.drop(columns=['M'], inplace=True)

@@ -12,7 +12,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 
 
 #Carregando a base de Dados 
-df = pd.read_csv("Dados\Serie_homicidios_Ceara_2014-2025.csv", sep=";")
+df = pd.read_csv("Dados/CVLI_CEARA.csv", sep=";")
 
 # |----------Pré-Processamento dos Dados --------------------|
 
