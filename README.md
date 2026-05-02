@@ -73,7 +73,7 @@ Inseriri as bibliotecas usadas aqui.....
 
 ## 📈 Modelo SARIMA 
 
-Antes de aplicar o modelo SARIMA, é necessário verificar a estacionariedade da série temporal. Por conta disso, foi aplicado o teste Augmented Dickey-Fuller (ADF). Na primeira aplicação, observa-se um p-valor de aproximadamente 0.068, indicando que a série original é não-estacionária, considerando o nível de significância de 5%.Para ajustar esse comportamento, aplicou-se a técnica de diferenciação para remover a tendência. Após a implementação desse processo, o novo p-valor observado foi de $4.2128 \times 10^{-29}$. Como esse valor é significativamente inferior a 0.05, a série torna-se estacionária, estando apta para a modelagem.
+Antes de aplicar o modelo SARIMA, é necessário verificar a estacionariedade da série temporal. Por conta disso, foi aplicado o teste Augmented Dickey-Fuller (ADF). Na primeira aplicação, observa-se um p-valor de aproximadamente 0.068, indicando que a série original é não-estacionária, com um nível de significância de 5%. Para ajustar esse comportamento, aplicou-se a técnica de diferenciação para remover a tendência. Após a implementação desse processo, o novo p-valor observado foi de $4.2128 \times 10^{-29}$. Como esse valor é significativamente inferior a 0.05, a série torna-se estacionária, estando apta para a modelagem.
 
 ![Estacionariedade](img/estacionaridade_serie.png)
 
