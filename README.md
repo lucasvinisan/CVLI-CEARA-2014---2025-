@@ -22,13 +22,23 @@
 
 ## 📁 Estrutura do Projeto
 
-| Arquivo | Descrição |
-|---------|-----------|
-|Dashboard | Análise Descritiva dos CVLI ocorridos no Ceará (2014 - 2025) |
-|Dados | Base de Dados utilizada para o estudo |
-| Img | Imagens dos plots dos modelos para análise|
-| `Sarima.py` | Análise exploratória + .... |
-| `.py` |  |
+```
+
+analise_cvli_ceara/
+├── Dados/                             
+│    ├── CVLI_CEARA.csv             # 🎲 Dados utilizados no estudo  
+│    └── CVLI_ACUMULADOS.csv        # 🎲 Dados de CVLI acumulados anos    
+├── Dashbord                        
+│    └── dashbord(CVLI)             # 📊 Análise Descritiva (2014 - 2025)
+├── img                             # 📁 Diretório com as imagens usadas no README 
+├── plotar_graficos.py              # 📈 Arquivo com os códigos de plots 
+├── exponential_smoothingdel.py     # 🔭 Modelo Preditivo Implementado 
+├── Sarima.py                       # 🔭 Modelo Preditico  Implementado
+└── README.md                       # 📝 Relatório final do Projeto 
+
+```
+
+
 
 
 ## 🔭  Análise Exploratório de Dados
@@ -104,7 +114,7 @@ Um atenção para o modelo é o ponto 60 observado no gráfico 1 (possivelmente 
 ### Treinamento 
 
 Foi realzzado uma divisão da base de dados para treinamento e teste como evidência a imagem abaixo. 
- 
+
 ![divisao_tes_trein](img/Treino_teste.png)
 
 
