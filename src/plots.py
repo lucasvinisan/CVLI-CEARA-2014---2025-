@@ -2,10 +2,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
-from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-plt.style.use('grayscale') #Definindo globalmente o stilos dos plots 
+#Definindo globalmente o style dos plots 
+plt.style.use('grayscale') 
 
+# |------------ Visualização do modelo sarima.py --------------------------|
 def plotar_graficos_serie (df):
     
     #Criando uma figura com três linhas e uma coluna para plotar os três graficos em um só 
@@ -35,6 +36,7 @@ def plotar_graficos_serie (df):
     plt.tight_layout()
     plt.show()
 
+# |------------ Visualização do modelo sarima.py --------------------------|
 def plotar_validacao(test, forecast, df):
    
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
@@ -52,7 +54,12 @@ def plotar_validacao(test, forecast, df):
     plt.tight_layout()
     plt.show()
 
+def modelo_diagnostico(modelo): 
+    modelo.plot_diagnostics()
+    plt.tight_layout()
+    plt.show()
 
+# |------------ Decompondo a Série a Temporal (ADITIVA) --------------------------|
 def decomposicao_aditivo(df):
 
     decomposicao_serie = seasonal_decompose(df['CVLI'], model='addmuitive', period=12)
@@ -61,6 +68,7 @@ def decomposicao_aditivo(df):
     plt.tight_layout()
     plt.show()
 
+# |------------ Decompondo a Série a Temporal (MULTIPLICATIVA) --------------------------|
 def decomposicao_multplicativo(df):
     
     decomposicao_serie = seasonal_decompose(df['CVLI'], model='multiplicative', period=12)
@@ -69,6 +77,7 @@ def decomposicao_multplicativo(df):
     plt.tight_layout()
     plt.show()
 
+# |------------ Comparação --------------------------|
 def tabela_comparacao(test, forecast):
     comparativo = test.to_frame()
     comparativo['Previsao'] = forecast['CVLI']
@@ -76,17 +85,10 @@ def tabela_comparacao(test, forecast):
     comparativo['Acerto_%'] = 100 - (comparativo['Erro_Absoluto'] / comparativo['CVLI'] * 100)
     print(comparativo)
 
-def calculando_metricas(test, forecast):
-    # MAE: Média de erro absoluto 
-    mae = mean_absolute_error(test, forecast)
 
-    # RMSE: Penaliza erros maiores 
-    rmse = np.sqrt(mean_squared_error(test, forecast))
 
-    # MAPE: Erro percentual
-    mape = np.mean(np.abs((test - forecast['CVLI']) / test)) * 100
 
-    print(f"Erro Médio Absoluto (MAE): {mae:.2f} crimes")
-    print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f} crimes")
-    print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
 
+
+
+# |------------ PLot do arquivo exponential_smoothing.py --------------------------|

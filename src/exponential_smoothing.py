@@ -8,7 +8,11 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 
-dataFrame = pd.read_csv('Dados/CVLI_CEARA.csv', sep=';')
+
+def executar_exponential_smoothing():
+    print('ola') 
+
+dataFrame = pd.read_csv('Dados/CVLI_PROCESSADO.csv', index_col=0, parse_dates=True)
 
 
 dataFrame.drop(columns=['M'], inplace=True)

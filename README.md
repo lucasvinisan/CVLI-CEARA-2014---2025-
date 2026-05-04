@@ -2,9 +2,9 @@
 
 ## 📄 Resumo
     
-- **Problema**: As altas taxas de criminalidade são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Partindo desse pressuposto, como criar um estudo de análise preditiva e descritiva que evidencie o comportamento desses números nos últimos 12 anos no estado, com a finalidade de obter informações relevantes acerca dessa problemática?
+- **Problema**: As altas taxas de criminalidade são um dos problemas mais graves enfrentados pelo estado do Ceará nos últimos anos. Partindo desse ponto, como criar um estudo que evidencie o comportamento dos número de homicídios no estado do Ceará, com a finalidade de obter informações relevantes acerca dessa problemática?
 
-- **Solução**: Realizar um estudo descritivo sobre os dados acumulados de CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 e 2025. Além disso, foram implementados algoritmos preditivos com o intuito de obter possíveis cenários para os valores acumulados de CVLI no ano de 2026 no Ceará.
+- **Solução**: Realizar um estudo descritivo sobre os dados acumulados de CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 e 2025, e implementar algoritmos preditivos com o intuito de obter possíveis cenários para os valores acumulados de CVLI no ano de 2026 no Ceará.
 
  a parte do impacto deve ser alterada 
 
@@ -26,15 +26,19 @@
 
 analise_cvli_ceara/
 ├── Dados/                             
-│    ├── CVLI_CEARA.csv             # 🎲 Dados utilizados no estudo  
+│    ├── CVLI_PROCESSADO.csv        # 🎲 Dados utilizados no estudo  
 │    └── CVLI_ACUMULADOS.csv        # 🎲 Dados de CVLI acumulados anos    
-├── Dashbord                        
+├── Dashbord/                        
 │    └── dashbord(CVLI)             # 📊 Análise Descritiva (2014 - 2025)
-├── img                             # 📁 Diretório com as imagens usadas no README 
-├── plotar_graficos.py              # 📈 Arquivo com os códigos de plots 
-├── exponential_smoothingdel.py     # 🔭 Modelo Preditivo Implementado 
-├── Sarima.py                       # 🔭 Modelo Preditico  Implementado
-└── README.md                       # 📝 Relatório final do Projeto 
+├── img/                            # 📁 Diretório com as imagens usadas no README 
+├── src/                                
+│    ├── plotar_graficos.py         # 📈 Arquivo com os códigos de plots 
+│    ├── exponential_smoothing.py   # 🔭 Modelo Preditivo Implementado 
+│    ├── Sarima.py                  # 🔭 Modelo Preditico  Implementado
+│    └── modelo_sarima.py           #    Funções construção do modelo sarima     
+├── requirements.txt                #    Bibliotecas usadas no projeto 
+├── main                            #    Função principal 
+└── README.md                       #    Relatório final do Projeto 
 
 ```
 
@@ -87,9 +91,9 @@ Antes de aplicar o modelo SARIMA, é necessário verificar a estacionariedade da
 
 ![Estacionariedade](img/estacionaridade_serie.png)
 
-### Modelo Escolhido 
+### Auto-Arima 
 
-Código utilizado para encontra os melhores parâmteros para o modelo, considerendo uma sazonalidade mensal m = 12. 
+Algoritmo implementado para testar diferentes combinações de parâmetros para selecionar o melhor ajuste com base nos critérios estatísticos.
 
 ![auto-arima](img/ModeloArima.png)
 
@@ -142,8 +146,8 @@ Foi realzzado uma divisão da base de dados para treinamento e teste como evidê
 
 | Modelo                |  MAPE  |  MAE  | RMSE| LB_STAT(Lag 10) | LB_pVALUE     |
 |-----------------------|--------|-------|-----|-----------------|---------------|
-|  |   | |  |   | |
 | Sarima                | 11.40% | 30.79| 37.66 |  6.533792 |0.768602|
+|  |   | |  |   | |
 
 ✅ .
 
