@@ -153,10 +153,9 @@ Foi realzzado uma divisão da base de dados para treinamento e teste como evidê
 | Modelo                |  MAPE  |  MAE  | RMSE| LB_STAT(Lag 10) | LB_pVALUE     |
 |-----------------------|--------|-------|-----|-----------------|---------------|
 | Sarima                | 11.40% | 30.79| 37.66 |  6.533792 |0.768602|
-|  |   | |  |   | |
+| Exponential Smoothing |   | |  |   | |
 
 ✅ .
-
 
 
 ## ▶️ Como reproduzir
