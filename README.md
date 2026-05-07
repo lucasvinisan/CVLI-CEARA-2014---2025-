@@ -26,19 +26,25 @@
 
 analise_cvli_ceara/
 ├── Dados/                             
-│    ├── CVLI_PROCESSADO.csv        # 🎲 Dados utilizados no estudo  
-│    └── CVLI_ACUMULADOS.csv        # 🎲 Dados de CVLI acumulados anos    
+│    ├── CVLI_PROCESSADO.csv            # 🎲 Dados utilizados no estudo  
+│    └── CVLI_ACUMULADOS.csv            # 🎲 Dados de CVLI acumulados anos    
 ├── Dashbord/                        
-│    └── dashbord(CVLI)             # 📊 Análise Descritiva (2014 - 2025)
-├── img/                            # 📁 Diretório com as imagens usadas no README 
-├── src/                                
-│    ├── plotar_graficos.py         # 📈 Arquivo com os códigos de plots 
-│    ├── exponential_smoothing.py   # 🔭 Modelo Preditivo Implementado 
-│    ├── Sarima.py                  # 🔭 Modelo Preditico  Implementado
-│    └── modelo_sarima.py           #    Funções construção do modelo sarima     
-├── requirements.txt                #    Bibliotecas usadas no projeto 
-├── main                            #    Função principal 
-└── README.md                       #    Relatório final do Projeto 
+│    └── dashbord(CVLI)                 # 📊 Análise Descritiva (2014 - 2025)
+├── img/                                # 📁 Diretório com as imagens usadas no README 
+├── src/
+│    ├── ExponentialSmoothing/
+│    │    ├── exponential_Smoothing.py  # 🔭 Modelo Preditivo Implementado 
+│    │    ├── modelo.py                 #    Funções construção do modelo  
+│    │    └── plots..py                 #    Visualização dos Gráficos
+│    │
+│    └── Sarima/                             
+│        ├── exponential_Smoothing.py   # 🔭 Modelo Preditivo Implementado 
+│        ├── modelo.py                  #    Funções construção do modelo  
+│        └── plots..py                  #    Visualização dos Gráficos
+│    
+├── requirements.txt                    #    Bibliotecas usadas no projeto 
+├── main                                #    Função principal 
+└── README.md                           #    Relatório final do Projeto 
 
 ```
 

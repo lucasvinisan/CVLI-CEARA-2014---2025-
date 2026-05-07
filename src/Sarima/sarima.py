@@ -1,6 +1,7 @@
 import pandas as pd 
-from src import plots as grafico 
-from src import modelo as ms
+import numpy as np 
+from src.Sarima import plots as grafico 
+from src.Sarima import modelo as ms
 
 
 def executar_sarima(df):
@@ -22,8 +23,6 @@ def executar_sarima(df):
     grafico.modelo_diagnostico(modelo)
 
     test, forecast = ms.validar_modelo_sarima(modelo, df)
-
-    print(forecast)
    
     #validaçãp
     grafico.plotar_validacao(test, forecast, df)
@@ -38,11 +37,12 @@ def executar_sarima(df):
     print(resultado_teste_lb) 
 
     # |------------------ Realizando as Previsões --------------------------------|
-
     previsao = ms.previsao_modelo(modelo, df)
-
-    print(previsao)
     
+    return previsao
+    
+
+
 
 
 

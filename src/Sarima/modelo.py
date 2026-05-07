@@ -6,7 +6,7 @@ import numpy as np
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
-from src import plots as grafico 
+from src.Sarima import plots as grafico 
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from statsmodels.stats.diagnostic import acorr_ljungbox
 
@@ -86,6 +86,7 @@ def  test_Ljung_Box(modelo):
     return resultado_lb
 
 def calculando_metricas(test, forecast):
+    
     # MAE: Média de erro absoluto 
     mae = mean_absolute_error(test, forecast)
 
@@ -98,3 +99,4 @@ def calculando_metricas(test, forecast):
     print(f"Erro Médio Absoluto (MAE): {mae:.2f} crimes")
     print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f} crimes")
     print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
+
