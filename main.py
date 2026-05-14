@@ -19,7 +19,7 @@ def executar():
     #previsao_exponential_smoothing = executar_exponential_smoothing(df)
 
     #Modelo Sarima
-    previsao_sarima = executar_sarima(df)
+    #previsao_sarima = executar_sarima(df)
 
     #Modelo prophet
     #previsao_prophet = executar_prophet(df)
@@ -55,7 +55,7 @@ def executar():
 
 def abrir_dashboard():
     caminho_atual = os.path.dirname(os.path.abspath(__file__))
-    caminho_html = os.path.join(caminho_atual, 'dashboard', 'index.html')
+    caminho_html = os.path.join(caminho_atual, 'index.html')
     
     if os.path.exists(caminho_html):
         url = 'file://' + os.path.realpath(caminho_html)
@@ -65,4 +65,4 @@ def abrir_dashboard():
     
 if __name__ == "__main__":
     executar()
-    #abrir_dashboard()
+    abrir_dashboard()

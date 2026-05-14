@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard/style/style.css">
     <title>Dashboard CVLI Ceará</title>
 </head>
 <body>
 
-    <div>
-        <h1>Uma Análise descritiva dos CVLI Estado do Ceará (2014 - 2025)</h1>
+    <div class="div_inicio">
+        <h1 >Uma Análise descritiva dos CVLI Estado do Ceará (2014 - 2025)</h1>
     </div>
 
-    <div class='tableauPlaceholder' id='viz1778197824508'>
+    <div class='tableauPlaceholder' id='dashboard_tableau'>
         <object class='tableauViz' style='display:none;'>
             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
             <param name='embed_code_version' value='3' />
@@ -26,7 +27,7 @@
     </div>
 
     <script>
-        var divElement = document.getElementById('viz1778197824508');
+        var divElement = document.getElementById('dashboard_tableau');
         var vizElement = divElement.getElementsByTagName('object')[0];
         
         vizElement.style.width = '100%';
