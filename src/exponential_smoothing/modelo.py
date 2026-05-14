@@ -8,16 +8,15 @@ from statsmodels.tsa.api import SimpleExpSmoothing, Holt
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.stats.diagnostic import acorr_ljungbox
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
-
-
+from statsmodels.stats.diagnostic import acorr_ljungbox
 
 def modelo(df):
 
-    #È necessário construir um novo modelo para validação 
+    #É necessário construir um novo modelo para validação 
     modelo_suavizacao_exponencial = ExponentialSmoothing(
         df['CVLI'], 
-        trend='add',
-        seasonal='add',
+        trend='additive',
+        seasonal='additive',
         seasonal_periods=12
     )
 
@@ -25,8 +24,8 @@ def modelo(df):
 
 def validacao_modelo(modelo, df): 
     
-    train = df['2014-01-01' : '2024-03-01']
-    test = df['2024-04-01': ]
+    train = df['2014-01-01' : '2023-12-01']
+    test = df['2024-01-01': ]
 
 
     modelo_treino = ExponentialSmoothing(
@@ -71,3 +70,24 @@ def calculando_metricas(test, forecast):
     print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f} crimes")
     print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
 
+def transformar_DataFrame(previsao): 
+
+    datas = pd.date_range(start='2026-04', end='2026-12', freq='MS')
+    previsao = previsao.values.flatten() #A previsão retorna uma matriz 2D por isso a função 
+
+    df_cvli = pd.DataFrame({
+    'MES': datas,
+    'CVLI': previsao 
+    })
+
+    df_cvli['MES'] = df_cvli['MES'].dt.to_period('M') # para ficar melhor apresentavel 
+    
+    return df_cvli
+
+def  test_Ljung_Box(modelo_ajustado): 
+
+    residuos = modelo_ajustado.resid
+
+    resultado_lb = acorr_ljungbox(residuos, lags=[10], return_df=True)
+
+    return resultado_lb

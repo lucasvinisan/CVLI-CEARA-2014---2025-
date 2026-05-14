@@ -1,0 +1,25 @@
+
+body,html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+#viz1778197824508 {
+    flex-grow: 1;
+    width: 100% !important;
+    height: 100% !important;
+}
+

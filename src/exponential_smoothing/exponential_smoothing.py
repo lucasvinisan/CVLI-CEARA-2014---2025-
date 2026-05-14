@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.api import ExponentialSmoothing
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
-from src.ExponentialSmoothing import modelo as es
-from src.ExponentialSmoothing import plots as grafico 
+from src.exponential_smoothing import modelo as es
+from src.exponential_smoothing import plots as grafico 
 
 
-def executar_exponential_Smoothing(df):
+def executar_exponential_smoothing(df):
 
     modelo = es.modelo(df)
 
@@ -18,6 +18,13 @@ def executar_exponential_Smoothing(df):
 
     previsao = es.previsao(modelo, df)
 
+    previsao = es.transformar_DataFrame(previsao)
+
+    modelo_ajustado = modelo.fit() # O teste ljung Box necessita de um modelo ajustado
+    
+    ljung_box = es.test_Ljung_Box(modelo_ajustado)
+    
+    print(ljung_box)
 
     return previsao
 

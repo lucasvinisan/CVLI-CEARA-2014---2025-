@@ -6,7 +6,7 @@ import numpy as np
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
-from src.Sarima import plots as grafico 
+from src.sarima import plots as grafico 
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from statsmodels.stats.diagnostic import acorr_ljungbox
 
@@ -17,8 +17,8 @@ def testar_estacionariedade(serie):
 
     resultado = adfuller(serie) 
     
-    print('Estatistica ADF: ', resultado[0]) #Quanto mais negativo mais estácionário é a série
-    print('p-valor: ', resultado[1]) # > 0.05 então a série não é tecnicamente estácionária (Existe tencia de queda ou subida)
+    print('Estatistica ADF: ', resultado[0]) 
+    print('p-valor: ', resultado[1]) 
 
     if (resultado[1] > 0.05):
         print('Serie não é estácionaria')
@@ -39,7 +39,8 @@ def treinar_modelo(serie):
                             m = 12, 
                             seasonal = True, 
                             d = 1, 
-                            D = 1, 
+                            D = 1,
+                            test='adf',
                             trace = True, 
                             error_action='ignore', 
                             suppress_warnings = True, 
@@ -99,4 +100,19 @@ def calculando_metricas(test, forecast):
     print(f"Erro Médio Absoluto (MAE): {mae:.2f} crimes")
     print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f} crimes")
     print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
+
+def transformar_DataFrame(previsao): 
+
+    datas = pd.date_range(start='2026-04', end='2026-12', freq='MS')
+    previsao = previsao.values.flatten() #A previsão retorna uma matriz 2D por isso a função 
+
+    df_cvli = pd.DataFrame({
+    'MES': datas,
+    'CVLI': previsao 
+    })
+
+
+    df_cvli['MES'] = df_cvli['MES'].dt.to_period('M') # para ficar melhor apresentavel 
+    
+    return df_cvli
 

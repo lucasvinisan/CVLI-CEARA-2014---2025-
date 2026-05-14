@@ -6,62 +6,98 @@
 
 - **Solução**: Realizar um estudo descritivo sobre os dados acumulados de CVLI (Crimes Violentos Letais e Intencionais) entre os anos de 2014 e 2025, e implementar algoritmos preditivos com o intuito de obter possíveis cenários para os valores acumulados de CVLI no ano de 2026 no Ceará.
 
- a parte do impacto deve ser alterada 
+- **Impacto:** No ano de 2025 o estado do Ceará apresentou um total de 3.178 homicidios. Partindo disso, temos que o estudo identificou tendência de queda nos número de CVLI observados no estado do ceará para o ano de 2026. Entretando, apesar da tendência de redução, os dados ainda são preocupantes, o que mostra a necessidade de politicas públicas direcionadas para o combate do crime organizado e redução de taxa de homicídios em todas as esferas do estado. 
 
-- **Impacto:** O estudo identificou tendência de queda nos números de assassinatos no estado para os próximos anos, mas com números preocupantes que merecem atenção do poder público. 
+
+
+| Modelo                |  Consolidados (Jan - Mar)   | Melhor (Cenário) | Previsto (Abr - Dez)| Pior (Cenário)|Total (2026) Previsto |
+|-----------------------|--------|-------|-------|-------|-----|
+| Exponential Smoothing | 472 |- | 1255|- | 1727|  
+| Sarima                 |472 |- |1342| -| 1814 |  
+| Prophet               |472| 1326 |1982 |3593 |2454|
+
+```
+ Total (2026) Previsto = Consolidados + Previsto
+```
+
+
+A divergência entre os modelos projetados e os dados históricos de 2025 sugere a influência de fatores sazonais e externos. Destaca-se que o ano de 2026 (o Ceará apresentou uma redução considerável no número de CVLI no priemiro trimestre). Além disso, sendo ano de pleito eleitoral para o Executivo Estadual, onde são intensificadas políticas de policiamento ostensivo, o que pode explicar a redução atípica observada no primeiro trimestre e a subsequente projeção de queda acentuada pelos modelos de suavização e séries temporais. 
+
 
 ## 📋 Introdução e Contextualização
 
-- **Objetivo:** O objetivo principal deste estudo é extrair insights estratégicos sobre os índices de CVLI no estado do Ceará. A análise identifica padrões, como os meses com maior incidência de crimes, visando fornecer subsídios fundamentais tanto para a Secretaria de Segurança Pública quanto para a sociedade civil.
+- **Objetivo:** O objetivo principal deste estudo é extrair insights estratégicos sobre os índices de CVLI no estado do Ceará. A análise identifica padrões, como os meses com maior incidência de crimes, visando fornecer infromações fundamentais sobre o número de homicídios no Ceará.
 
-- **Metodologia:** Na análise preditiva, as ferramentas utilizadas foram a linguagem de programação Python, empregada na análise exploratória e na construção dos modelos preditivos SARIMA e (). Para a análise descritiva, utilizou-se o Tableau para a criação e visualização do dashboard, o Python para extração e tratamento dos dados, e o Excel para a visualização da base de dados.  
+- **Metodologia:** Na análise preditiva, as ferramentas utilizadas foram a linguagem de programação Python, empregada na análise exploratória e na construção dos modelos preditivos foram impleemntadas três métodos de modelagem de séries temporais: Sarima, Exponential Smoothing e Prophet. Para a análise descritiva, utilizou-se o Tableau para a criação e visualização do dashboard e o Python para extração e tratamento dos dados.  
 
 ## 🎲 Coleta de Dados
 
-- **Fonte:** Os dados foram obtidos por meio do site da Secretaria de Segurança Pública do Estado do Ceará e organizados em uma planilha do tipo `.csv`. Como as informações estavam completas, não foi necessário realizar o tratamento de campos nulos ou dados faltantes. Os dados estão distribuídos por mês de ocorrência e gênero da vítima (Feminino ou Masculino), totalizando 144 registros que representam cada mês dos 12 anos analisados no estudo (2014 a 2025).
+- **Fonte:** Os dados foram obtidos por meio do portal da Secretaria de Segurança Pública e Defesa Social (SSPDS) do Estado do Ceará e organizados em um arquivo no formato .csv. Devido à integridade das informações, não foi necessária a aplicação de técnicas para tratamento de valores nulos ou dados faltantes. O conjunto de dados compreende 144 registros mensais, cobrindo o intervalo de 12 anos (2014 a 2025), com a distribuição das ocorrências por gênero (Feminino e Masculino). Para a elaboração das previsões, foram utilizadas as colunas de séries históricas e a variável correspondente ao somatório total de CVLI ocorridas no respectivo mes.
 
 ## 📁 Estrutura do Projeto
 
 ```
 
 analise_cvli_ceara/
-├── Dados/                             
-│    ├── CVLI_PROCESSADO.csv            # 🎲 Dados utilizados no estudo  
-│    └── CVLI_ACUMULADOS.csv            # 🎲 Dados de CVLI acumulados anos    
-├── Dashbord/                        
-│    └── dashbord(CVLI)                 # 📊 Análise Descritiva (2014 - 2025)
-├── img/                                # 📁 Diretório com as imagens usadas no README 
+├── dados/                                       # 🎲 Dados utilizados no estudo
+│    ├── cvli_processados.csv                    
+│    └── cvli_acumulados_ano.csv                 
+├── dashboard/                                   # 📊 Análise Descritiva (2014 - 2025)
+│    ├── style/
+│    │    └── style.css                         
+│    └── index.html                            
+├── models/                                      # 🔬 Moddelo previsão gerados no estudo
+│    ├── previsao_exponential_smoothing.joblib  
+│    ├── previsao_prophet.joblib  
+│    └── previsao_sarima.joblib                  
+├── img/                                         # 📁 Diretórios com as imagens usadas no README
+│    ├── exponential smoothing/                 
+│    ├── sarima/    
+│    ├── prophet/                       
+│    └── serie/
 ├── src/
-│    ├── ExponentialSmoothing/
-│    │    ├── exponential_Smoothing.py  # 🔭 Modelo Preditivo Implementado 
-│    │    ├── modelo.py                 #    Funções construção do modelo  
-│    │    └── plots..py                 #    Visualização dos Gráficos
+│    ├── exponential_smoothing/
+│    │   ├── exponential_smoothing.py            # 🔭 Modelo Preditivo Implementado 
+│    │   ├── modelo.py                           # ▶️ Funções de construção do modelo  
+│    │   └── plots.py                            # 🔎 Visualização dos Gráficos
 │    │
-│    └── Sarima/                             
-│        ├── exponential_Smoothing.py   # 🔭 Modelo Preditivo Implementado 
-│        ├── modelo.py                  #    Funções construção do modelo  
-│        └── plots..py                  #    Visualização dos Gráficos
-│    
-├── requirements.txt                    #    Bibliotecas usadas no projeto 
-├── main                                #    Função principal 
-└── README.md                           #    Relatório final do Projeto 
+│    ├── sarima/                             
+│    │   ├── sarima.py                           # 🔭 Modelo Preditivo Implementado 
+│    │   ├── modelo.py                           # ▶️ Funções de construção do modelo  
+│    │   └── plots.py                            # 🔎 Visualização dos Gráficos
+│    │    
+│    └── prophet/                             
+│        ├── prophet_cvli.py                    # 🔭 Modelo Preditivo Implementado 
+│        ├── modelo.py                           # ▶️ Funções de construção do modelo  
+│        └── plots.py                            # 🔎 Visualização dos Gráficos
+├── outputs/                                     # 🎲 Previsões geradas pelos modelos 
+│     ├── previsao_exponential_smoothing.csv
+│     ├── previsao_prophet.csv
+│     └── previsao_sarima.csv                                   
+├── requirements.txt                             # 💻 Bibliotecas usadas no projeto 
+├── .gitignore
+├── main.py                                      # 🎯 Função principal 
+└── README.md                                    # 📋 Relatório final do Projeto 
 
 ```
-
-
 
 
 ## 🔭  Análise Exploratório de Dados
 
 ### Distribuição dos Homicidios Ceará (2014 - 2025) 
 
-![Homcidios_Ceara](img/distribuicao_percentual.jpeg)
+<div align="center">
+  <img src="img/serie/distribuicao_dados_serie.jpeg" width="1200">
+</div>
 
-A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de CVLI são divididos pelas variáveis M (Masculino) e F (Feminino). Como evidenciado no Gráfico 3, a série histórica é composta, majoritariamente, por vítimas do sexo masculino; nota-se que o comportamento da curva de CVLI é quase integralmente ditado pela variação dos dados de homens, dada a baixa representatividade estatística das ocorrências femininas no montante total.
+A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de CVLI estão distribuídas pelo Mes de ocorrência, pela variável CVLI que represnta a soma total de CVLI observado e pelas variáveis M (Masculino) e F (Feminino). A série histórica é composta, majoritariamente, por vítimas do sexo masculino; nota-se que o comportamento da curva de CVLI é quase integralmente ditado pela variação dos CVLI ocorrodos com vítimas do sexo masculino, dada a baixa representatividade estatística das ocorrências crimes contra pessoas do sexo feminino.
+
 
 ### Decomposição da Série Temporal 
 
-![Serie_Temporal](img/Serie_Temporal.jpeg)
+<div align="center">
+  <img src="img/serie/Serie_Temporal.jpeg" width="1200">
+</div>
 
 *Interpretação dos Gráficos Obtidos*
 
@@ -69,7 +105,7 @@ A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de 
   
 - VARIAÇÃO: Os dados de CVLI iniciam com o patamar um pouco superior a 400 no ano de 2014, seguido de algumas oscilações. Posteriormente, observar-se uma redução drástica entre os meses finais de 2018 e iniciais de 2019. O ano  2017 apresentou o maior valor observado de CVLI além de ser o ano com maior valor acumulado de homicídios no estado do Ceará. Por outro lado, o ano de 2019 apresentou o menor valor  observado na série, com meses apresentando dados inferiores a 200 CVLIs.
 
-- Volatilidade: Observa-se fortes oscilações, com picos muitos acentuados e reduções drásticas em alguns períodos da série. Essas flutuações podem ter sido influenciadas por eventos externos como crises na segurança pública, conflitos entre facções criminosas e entre outros eventos externos.  
+- Volatilidade: Observa-se fortes oscilações, com picos muitos acentuados e reduções drásticas em alguns períodos da série. Essas flutuações podem ter sido influenciadas por eventos externos como crises na segurança pública e conflitos entre facções.  
 
 **Trend (Tendência)**
 
@@ -89,19 +125,33 @@ A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de 
 
 ## 📚 Bibliotecas
 
-Inseriri as bibliotecas usadas aqui.....
+- statsmodels (v0.14.6)
+- scikit-learn (v1.8.0)
+- matplotlib (v3.7.1)
+- pandas (v3.0.2)
+- pmdarima (v2.1.1)
+- numpy (v1.26.4)
+- joblib (v1.5.3)
+- Ambinete de Desenvolvimento (Visual Studio Code)
+- Python Linguagem de Programação 
 
 ## 📈 Modelo SARIMA 
 
 Antes de aplicar o modelo SARIMA, é necessário verificar a estacionariedade da série temporal. Por conta disso, foi aplicado o teste Augmented Dickey-Fuller (ADF). Na primeira aplicação, observa-se um p-valor de aproximadamente 0.068, indicando que a série original é não-estacionária, com um nível de significância de 5%. Para ajustar esse comportamento, aplicou-se a técnica de diferenciação para remover a tendência. Após a implementação desse processo, o novo p-valor observado foi de $4.2128 \times 10^{-29}$. Como esse valor é significativamente inferior a 0.05, a série torna-se estacionária, estando apta para a modelagem.
 
-![Estacionariedade](img/estacionaridade_serie.png)
+
+<div align="center">
+  <img src="img/serie/estacionaridade_serie.png" width="300">
+</div>
 
 ### Auto-Arima 
 
 Algoritmo implementado para testar diferentes combinações de parâmetros para selecionar o melhor ajuste com base nos critérios estatísticos.
 
-![auto-arima](img/ModeloArima.png)
+
+<div align="center">
+  <img src="img/sarima/modelo_auto_arima.png" width="400">
+</div>
 
 Modelo escolhido: 
 
@@ -109,7 +159,9 @@ Modelo escolhido:
 
 ### Diagnosticos do Modelo SARIMA 
 
-![Diagnostico](img/diagnostico_sarima.jpeg)
+<div align="center">
+  <img src="img/sarima/diagnostico_sarima.jpeg" width="600">
+</div>
 
 - **Standardized residual (Resíduo padronizado)**: Na maior parte do tempo, temos que os dados estão bem distribuidos. POr outro lado, temos que há um ponto fora da curva (outlier) no indice 60, onde o erro salta de forma significativa para cima de 6. Por fim, isso evidencia um evento isolado que o modelo não conseguiu prever. 
 
@@ -123,19 +175,77 @@ Um atenção para o modelo é o ponto 60 observado no gráfico 1 (possivelmente 
 
 ### Treinamento 
 
-Foi realzzado uma divisão da base de dados para treinamento e teste como evidência a imagem abaixo. 
+Foi realzado uma divisão da base de dados para treinamento e teste como evidência a imagem abaixo. 
 
-![divisao_tes_trein](img/Treino_teste.png)
-
-
+<div align="center">
+  <img src="img/serie/Treino_teste.png" width="400">
+</div>
 
 ### Validação do Modelo (Previsões 2024 - 2025)
-![Validacao](img/Validacao.jpeg)
 
+
+<div align="center">
+  <img src="img/sarima/validacao_modelo_sarima.jpeg" width="1200">
+</div>
 
 ### Metricas do SARIMA (MAE | MAPE | RMSE)
 
-![Metricas](img/Metricas_SARIMA.png)
+
+<div align="center">
+  <img src="img/sarima/Metricas_SARIMA.png" width="300">
+</div>
+
+As metricas apresentadas quando a abase de dados estava levando em consideração os dados de (2014 - 2025)
+
+<div align="center">
+  <img src="img/sarima/metricas_auto_arima_.png" width="300">
+</div>
+
+Valores obtidos ao inserir os dados dos meses de jan - mar de 2026. 
+Nesse primeiro trimestre o estado do Ceará apresentou o menor número para primeiro trimestre da série histórico o que impactou o resultado final obtido pelo modelo. 
+
+### Interpretação das Metricas do Modelo 
+
+- **MAE (Mean Absolute Error)**: O MAE observado foi de 34.9. Isso indica que o modelo erra, em média, 35 ocorrências de CVLI por período. Dado a volatilidade dos dados é um desenepnho considerável dado a variabilidade do modelo. 
+
+- **RMSE (Root Mean Square Error)**: O valor do RMSE (42.6) apresentou um valor reletivamente alto comparado ao MAE. Essa diferença entre as duas métricas sugere que o modelo teve um maior dificuldade, o que pode ser visto pela a inserção de novos dados do ano de 2026 que impactaram nas metricas finais do modelo.
+
+- **MAPE**: Com um MAPE de 15.2%, o modelo demonstra uma boa performance preditiva. Isso indica previsões sólidas e confiáveis para séries temporais de fenômenos sociais . 
+
+### Validação Estatística do Modelo (Ljung-Box)
+
+- **lb_pvalue e lb_stat**: como o valor de p-valor (0.768602) é inferior a 0.05, então  a hipotése nula deve ser considerada. Além disso, com os valores observados pelo p-valor (0.768602) e lb_stat (6.533792) desmostram que modelo captrou adequadamente os padrões sazonais e de tendência da série (os ruídos se comportam como ruído branco). 
+
+## 📈 Exponential Smoothing
+
+### Modelo Exponential Smoothing  
+
+<div align="center">
+  <img src="img/exponential smoothing/modelo_es.png" width="300">
+</div>
+
+### Diagnosticos do Modelo  Exponential Smoothing  
+
+
+### Treinamento 
+
+<div align="center">
+  <img src="img/exponential smoothing/modelo_treino_es.png" width="300">
+</div>
+
+### Validação do Modelo (Previsões 2024 - 2025)
+
+<div align="center">
+  <img src="img/exponential smoothing/validacao_modelo_exponential_smoonthig.jpeg" width="1200">
+</div>
+
+
+### Metricas do  Exponential Smoothing   (MAE | MAPE | RMSE)
+
+
+Valores obtidos ao inserir os dados dos meses de jan - mar de 2026. 
+Nesse primeiro trimestre o estado do Ceará apresentou o menor número para primeiro trimestre da série histórico o que impactou o resultado final obtido pelo modelo. 
+
 
 - **MAE (Mean Absolute Error)**: O MAE observado foi de 30.79. Isso indica que o modelo erra, em média, 31 ocorrências de CVLI por período.
 
@@ -143,19 +253,36 @@ Foi realzzado uma divisão da base de dados para treinamento e teste como evidê
 
 - **MAPE**: Com um MAPE de 11.40%, o modelo demonstra uma boa performance preditiva. Isso indica previsões sólidas e confiáveis para séries temporais de fenômenos sociais . 
 
-### Validação Estatística do Modelo (Ljung-Box)
+### Validação Estatística do Modelo 
 
-- **lb_pvalue e lb_stat**: como o valor de p-valor (0.768602) é inferior a 0.05, então  a hipotése nula deve ser considerada. Além disso, com os valores observados pelo p-valor (0.768602) e lb_stat (6.533792) desmostram que modelo captrou adequadamente os padrões sazonais e de tendência da série (os ruídos se comportam como ruído branco). 
 
 
 ## 📊 Resultados
 
-| Modelo                |  MAPE  |  MAE  | RMSE| LB_STAT(Lag 10) | LB_pVALUE     |
-|-----------------------|--------|-------|-----|-----------------|---------------|
-| Sarima                | 11.40% | 30.79| 37.66 |  6.533792 |0.768602|
-| Exponential Smoothing |   | |  |   | |
+| Modelo                |  MAPE  |  MAE  | RMSE| LB_STAT(Lag 10) | LB_pVALUE  |
+|-----------------------|--------|-------|-----|-----------------|------------|
+| Sarima                | 15.17% | 34.89| 42.55 |  6.533792 |0.768602 |
+| Exponential Smoothing | 13.64% | 30.48| 38.14 |  9.652282 |0.471511 | 
+|prophet |19.23% |60.85|82.20|~|~|
 
-✅ .
+
+✅  O melhor modelo para essa base de dados foi o Exponential Smmothing 
+
 
 
 ## ▶️ Como reproduzir
+
+
+```
+
+⏩ Executar a função Main()
+      | 
+      ├── executa exponential smoothing 1️⃣ 
+      | 
+      ├── executa sarima 2️⃣ 
+      |
+      ├── executa prophet 3️⃣ 
+      | 
+      └── executa dashborad /página html 4️⃣ 
+    
+```

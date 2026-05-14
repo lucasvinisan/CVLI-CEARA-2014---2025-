@@ -1,7 +1,7 @@
 import pandas as pd 
 import numpy as np 
-from src.Sarima import plots as grafico 
-from src.Sarima import modelo as ms
+from src.sarima import plots as grafico 
+from src.sarima import modelo as ms
 
 
 def executar_sarima(df):
@@ -38,7 +38,12 @@ def executar_sarima(df):
 
     # |------------------ Realizando as Previsões --------------------------------|
     previsao = ms.previsao_modelo(modelo, df)
-    
+
+
+    #Transformando em Dataframe para passar 
+    previsao = ms.transformar_DataFrame(previsao)
+
+
     return previsao
     
 
