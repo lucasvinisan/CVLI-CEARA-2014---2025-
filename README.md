@@ -277,20 +277,16 @@ Previsão do Modelo Prophet com intervalo de confiança de 95%
   <img src="img/prophet/previsao_modelo.jpeg" width="1200">
 </div>
 
-### Validação Cross-Validation 
-
-Validção cruzada (Cross validation)
+### Cross-Validation (Validação Cruzada)
 
 <div align="center">
   <img src="img/prophet/validacao_cruzada.png" width="500">
 </div>
 
 
-## Remoção dos anos de (2017 - 2020) anos com maior variabilidade dos anos (ruídos)
+### Remoção dos anos de (2017 - 2019) anos com maior variabilidade dos dados (ruídos)
 
-
-
-Eu decide remover os anos de 2017 a 2029 porque eles tinham uma alta variabilidade dos dados. Crises na Segurança pública e redução drasticas no número de CVLI. Esse valores estavam impactando de forma consideravel o desepenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
+Eu decide remover os anos de 2017 a 2019 porque eles tinham uma alta variabilidade dos dados. Crises na Segurança pública e redução drasticas no número de CVLI. Esse valores estavam impactando de forma consideravel o desepenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
 
 <div align="center">
   <img src="img/prophet/removendo_dados.png" width="500">
@@ -302,7 +298,7 @@ Adicionando datas de feriados Nacionais para novos observação.
   <img src="img/prophet/modelo_feriados.png" width="300">
 </div>
 
-Validação Cruzada
+### Cross-Validation (Validação Cruzada)
 
 <div align="center">
   <img src="img/prophet/removendo_anos_Cross_validation.png" width="500">
