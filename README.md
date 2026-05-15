@@ -284,7 +284,7 @@ Previsão do Modelo Prophet com intervalo de confiança de 95%
 </div>
 
 
-### Remoção dos anos de (2017 - 2019) anos com maior variabilidade dos dados (ruídos)
+### Remoção dos anos de (2017 - 2019) 
 
 Eu decide remover os anos de 2017 a 2019 porque eles tinham uma alta variabilidade dos dados. Crises na Segurança pública e redução drasticas no número de CVLI. Esse valores estavam impactando de forma consideravel o desepenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
 
