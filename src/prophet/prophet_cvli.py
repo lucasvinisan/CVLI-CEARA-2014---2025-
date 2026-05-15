@@ -12,7 +12,8 @@ def executar_prophet(df):
     
     new_df = md.preparar_df(df) #Apenas modificando as colunas para implementar o prophet 
 
-    #new_df = new_df[new_df['ds'] >= '2018-01-01'] #Le em consideração esse cenário e sem ele 
+    new_df = new_df[(new_df['ds'] <= '2017-01-01') | (new_df['ds'] >= '2020-01-01') ] 
+    #Le em consideração esse cenário e sem ele 
 
     #validação
     modelo, test = md.treinando_modelo(new_df) # Treinando modelo com dados de teste

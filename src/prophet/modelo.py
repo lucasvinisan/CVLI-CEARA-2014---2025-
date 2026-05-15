@@ -24,9 +24,10 @@ def treinando_modelo(df_prophet):
         interval_width=0.95,
         weekly_seasonality=False,
         daily_seasonality=False,
-        changepoint_prior_scale=0.15
+        changepoint_prior_scale=0.15,
        #changepoint_prior_scale=0.5 aplicando com intervalo é 2021 para frente 
     )
+    m.add_country_holidays(country_name='BR') #Adicionando feriados do Brasil 
     m.fit(train)
 
     return m, test
@@ -38,10 +39,11 @@ def modelo_final(df_prophet):
         interval_width=0.95,
         weekly_seasonality=False,
         daily_seasonality=False,
-        changepoint_prior_scale=0.15
-        #changepoint_prior_scale=0.5 aplicando com intervalo é 2021 para frente 
+        changepoint_prior_scale=0.15, 
 
-                )
+    )
+    m.add_country_holidays(country_name='BR') 
+    
     m.fit(df_prophet)
 
     return m

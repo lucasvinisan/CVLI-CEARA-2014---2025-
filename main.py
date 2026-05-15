@@ -12,7 +12,7 @@ def executar():
     #Caregando Dados
     df = pd.read_csv("dados/cvli_processados.csv", index_col=0, parse_dates=True)
 
-
+    
     # |----- Aplicando modelos estatísticos -------|
 
     # Modelo exponential smoothing     
@@ -22,7 +22,7 @@ def executar():
     #previsao_sarima = executar_sarima(df)
 
     #Modelo prophet
-    #previsao_prophet = executar_prophet(df)
+    previsao_prophet = executar_prophet(df)
     
     
     #print(previsao_sarima)

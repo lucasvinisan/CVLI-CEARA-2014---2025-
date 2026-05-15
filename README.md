@@ -42,7 +42,7 @@ analise_cvli_ceara/
 ├── dados/                                       # 🎲 Dados utilizados no estudo
 │    ├── cvli_processados.csv                    
 │    └── cvli_acumulados_ano.csv                 
-├── dashboard/                                  #style Dashboard 
+├── dashboard/                                   # 🔍 style Dashboard 
 │    └── style/
 │       └── style.css                         
 │                               
@@ -104,7 +104,7 @@ A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de 
 
 **Distribuição**
   
-- VARIAÇÃO: Os dados de CVLI iniciam com o patamar um pouco superior a 400 no ano de 2014, seguido de algumas oscilações. Posteriormente, observar-se uma redução drástica entre os meses finais de 2018 e iniciais de 2019. O ano  2017 apresentou o maior valor observado de CVLI além de ser o ano com maior valor acumulado de homicídios no estado do Ceará. Por outro lado, o ano de 2019 apresentou o menor valor  observado na série, com meses apresentando dados inferiores a 200 CVLIs.
+- Variação: Os dados de CVLI iniciam com o patamar superior aos 400 CVLIs no ano de 2014, seguido de algumas oscilações. Posteriormente, observar-se uma redução drástica entre os meses finais de 2018 e iniciais de 2019. O ano  2017 apresentou o maior valor de CVLI observado em um mês, além de ser o ano com maior valor acumulado de homicídios no estado do Ceará. Por outro lado, o ano de 2019 apresentou o menor valor  observado na série, com meses apresentando dados inferiores a 200 CVLIs.
 
 - Volatilidade: Observa-se fortes oscilações, com picos muitos acentuados e reduções drásticas em alguns períodos da série. Essas flutuações podem ter sido influenciadas por eventos externos como crises na segurança pública e conflitos entre facções.  
 
@@ -112,7 +112,7 @@ A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de 
 
 - Queda: A série inicia com valor de 400 CVLI no ano de 2014, seguida de uma queda suave até atingir seu menor valor no mês 35 (Fim do ano de 2015). Posteriormente, houve um aumento expressivo atingindo o seu pico no mês 45 (ano de 2017) o ano mais violento observado em todo o intervalo. Nos anos seguintes houve queda acentuada nos números de CVLI até o mês 65 (Ano de 2019). 
 
-- Estabilidade: Após o mês 80 (ano de 2020), a tendencia dos dados é queda suave e constante, sugerindo que políticas públicas de segurança ou condições externas (Fim de brigas entre facções por influência em território de tráfico de drogas) podem ter afetado os números de CVLI, onde os números de assassinatos estiveram sob relativo controle nos últimos anos da séries, sem novos picos explosivos observados. Por fim, nos últimos 4 anos de amostra observa-se uma certa estabilidade nos dados (Com uma pequena variabilidade dos dados).
+- Estabilidade: Após o mês 80 (ano de 2020), a tendencia dos dados é queda suave e constante, sugerindo que políticas públicas de segurança ou condições externas (Fim de conflitos entre facções criminos por influência em território de tráfico) podem ter afetado os números de CVLI. Por fim, nos últimos 4 anos de amostra observa-se uma certa estabilidade nos dados (Com uma pequena variabilidade dos dados).
 
 **Seasonal (Sazonal):**
 
@@ -215,7 +215,8 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 
 ### Validação Estatística do Modelo (Ljung-Box)
 
-- **lb_pvalue e lb_stat**: como o valor de p-valor (0.768602) é inferior a 0.05, então  a hipotése nula deve ser considerada. Além disso, com os valores observados pelo p-valor (0.768602) e lb_stat (6.533792) desmostram que modelo captrou adequadamente os padrões sazonais e de tendência da série (os ruídos se comportam como ruído branco). 
+- **p_valor**: como o valor de p-valor (0.768602
+) é superior a 0.05, então  a hipotése nula deve ser considerada (Os resíduos são ruídos brancos). Ou seja, toda a informação útil foi extraida da base de dados e convertida e previsão. 
 
 ## 📈 Exponential Smoothing
 
@@ -224,8 +225,6 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 <div align="center">
   <img src="img/exponential smoothing/modelo_es.png" width="300">
 </div>
-
-### Diagnosticos do Modelo  Exponential Smoothing  
 
 
 ### Treinamento 
@@ -244,24 +243,19 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 ### Metricas do  Exponential Smoothing   (MAE | MAPE | RMSE)
 
 
-Valores obtidos ao inserir os dados dos meses de jan - mar de 2026. 
-Nesse primeiro trimestre o estado do Ceará apresentou o menor número para primeiro trimestre da série histórico o que impactou o resultado final obtido pelo modelo. 
+- **MAE (Mean Absolute Error)**: O MAE observado foi de 30.48. Isso indica que o modelo erra, em média, ~31 ocorrências de CVLI por período.
 
+- **RMSE (Root Mean Square Error)**: O valor do RMSE (38.14) apresentou-se próximo ao MAE. Essa baixa diferença entre as duas métricas sugere que o modelo é consistente e não está cometendo erros de grande magnitude.
 
-- **MAE (Mean Absolute Error)**: O MAE observado foi de 30.79. Isso indica que o modelo erra, em média, 31 ocorrências de CVLI por período.
-
-- **RMSE (Root Mean Square Error)**: O valor do RMSE (37.66) apresentou-se próximo ao MAE. Essa baixa diferença entre as duas métricas sugere que o modelo é consistente e não está cometendo erros de grande magnitude.
-
-- **MAPE**: Com um MAPE de 11.40%, o modelo demonstra uma boa performance preditiva. Isso indica previsões sólidas e confiáveis para séries temporais de fenômenos sociais . 
+- **MAPE**: Com um MAPE de 13.64%, o modelo demonstra uma boa performance preditiva. Isso indica previsões sólidas e confiáveis para séries temporais de fenômenos sociais. 
 
 ### Validação Estatística do Modelo 
 
-
+- **p_valor**: como o valor de p-valor (0.471511) é superior a 0.05, então  a hipotése nula deve ser considerada (Os resíduos são ruídos brancos). Ou seja, toda a informação útil foi extraida da base de dados e convertida e previsão. 
 
 ## 📈 Prophet
 
-
-### IMplmentação do Modelo 
+### Modelo Prophet 
 
 Modelo implementado no prophet 
 <div align="center">
@@ -292,19 +286,45 @@ Validção cruzada (Cross validation)
 </div>
 
 
+## Remoção dos anos de (2017 - 2020) anos com maior variabilidade dos anos (ruídos)
 
+
+
+Eu decide remover os anos de 2017 a 2029 porque eles tinham uma alta variabilidade dos dados. Crises na Segurança pública e redução drasticas no número de CVLI. Esse valores estavam impactando de forma consideravel o desepenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
+
+<div align="center">
+  <img src="img/prophet/removendo_dados.png" width="500">
+</div>
+
+Adicionando datas de feriados Nacionais para novos observação.  
+
+<div align="center">
+  <img src="img/prophet/modelo_feriados.png" width="300">
+</div>
+
+Validação Cruzada
+
+<div align="center">
+  <img src="img/prophet/removendo_anos_Cross_validation.png" width="500">
+</div>
+
+A remoção do intervalo correspondente aos anos de 2017 a 2019 justifica-se por uma quebra estrutural na série temporal (causada por fatores externos), que introduziu ruídos e distorceu os componentes de tendência e sazonalidade capturados pelo algoritmo original. No ano de 2017 o estado apresentou um ano com maior número de assassinatos na histório. Por outro lado, em 2019 o estado apresentou o ano com menor valor acumulado de CVLI em toda a série. Portando, a decisão de remover o modelo gerou ganhos noestudo como pode ser obervado na comparação dos dois modelos. 
 
 ## 📊 Resultados
 
-| Modelo                |  MAPE  |  MAE  | RMSE| LB_STAT(Lag 10) | LB_pVALUE  |
+| Modelo                |  MAPE  |  MAE  | RMSE | LB_STAT(Lag 10) | LB_pVALUE  |
 |-----------------------|--------|-------|-----|-----------------|------------|
 | Sarima                | 15.17% | 34.89| 42.55 |  6.533792 |0.768602 |
 | Exponential Smoothing | 13.64% | 30.48| 38.14 |  9.652282 |0.471511 | 
-|prophet |19.23% |60.85|82.20|~|~|
+|prophet |~19.23% |~60.85|~82.20|~|~|
+|prophet (Modificado) | ~11.46% |~32.59|~38.71|~|~|
+
+(~) -> Aproximado 
 
 
-✅  O melhor modelo para essa base de dados foi o Exponential Smmothing 
+✅ **Prophet (Modificado)** alcançou o menor MAPE (~11,46%) em média entre todos os modelos testados, superando o Exponential Smoothing (13,64%) e o SARIMA (15,17%), além de reduzir drasticamente o erro do Prophet original (~19,23%).
 
+Menor Erro Absoluto: O modelo também liderou nas métricas absolutas, registrando um MAE de 32,59 e um RMSE de 38,71. Isso significa que as suas previsões, em média, aproximam-se muito mais dos valores reais observados na série.
 
 
 ## ▶️ Como reproduzir
