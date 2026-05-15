@@ -195,7 +195,7 @@ Foi realzado uma divisão da base de dados para treinamento e teste como evidên
   <img src="img/sarima/Metricas_SARIMA.png" width="300">
 </div>
 
-As metricas apresentadas quando a abase de dados estava levando em consideração os dados de (2014 - 2025)
+As metricas apresentadas quando a base de dados estava levando em consideração os dados de (2014 - 2025)
 
 <div align="center">
   <img src="img/sarima/metricas_auto_arima_.png" width="300">
@@ -254,6 +254,42 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 - **MAPE**: Com um MAPE de 11.40%, o modelo demonstra uma boa performance preditiva. Isso indica previsões sólidas e confiáveis para séries temporais de fenômenos sociais . 
 
 ### Validação Estatística do Modelo 
+
+
+
+## 📈 Prophet
+
+
+### IMplmentação do Modelo 
+
+Modelo implementado no prophet 
+<div align="center">
+  <img src="img/prophet/modelo.png" width="300">
+</div>
+
+### Treinamento 
+
+Divisão treino e teste para validação do modelo implmentado 
+
+<div align="center">
+  <img src="img/prophet/treino_teste.png" width="300">
+</div>
+
+### Previsão com intervalo de Confiança 
+
+Previsão do Modelo Prophet com intervalo de confiança de 95% 
+<div align="center">
+  <img src="img/prophet/previsao_modelo.jpeg" width="1200">
+</div>
+
+### Validação Cross-Validation 
+
+Validção cruzada (Cross validation)
+
+<div align="center">
+  <img src="img/prophet/validacao_cruzada.png" width="500">
+</div>
+
 
 
 
