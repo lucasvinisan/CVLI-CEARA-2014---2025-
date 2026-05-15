@@ -42,10 +42,10 @@ analise_cvli_ceara/
 ├── dados/                                       # 🎲 Dados utilizados no estudo
 │    ├── cvli_processados.csv                    
 │    └── cvli_acumulados_ano.csv                 
-├── dashboard/                                   # 📊 Análise Descritiva (2014 - 2025)
-│    ├── style/
-│    │    └── style.css                         
-│    └── index.html                            
+├── dashboard/                                  #style Dashboard 
+│    └── style/
+│       └── style.css                         
+│                               
 ├── models/                                      # 🔬 Moddelo previsão gerados no estudo
 │    ├── previsao_exponential_smoothing.joblib  
 │    ├── previsao_prophet.joblib  
@@ -76,6 +76,7 @@ analise_cvli_ceara/
 │     └── previsao_sarima.csv                                   
 ├── requirements.txt                             # 💻 Bibliotecas usadas no projeto 
 ├── .gitignore
+├── index.html                                   # 📊 Análise Descritiva (2014 - 2025)
 ├── main.py                                      # 🎯 Função principal 
 └── README.md                                    # 📋 Relatório final do Projeto 
 
