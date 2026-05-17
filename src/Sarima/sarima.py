@@ -39,9 +39,13 @@ def executar_sarima(df):
     # |------------------ Realizando as Previsões --------------------------------|
     previsao = ms.previsao_modelo(modelo, df)
 
-
+    grafico.plotar_previsao_2026(previsao)
+    
+    '''
     #Transformando em Dataframe para passar 
     previsao = ms.transformar_DataFrame(previsao)
+    
+    '''
 
 
     return previsao

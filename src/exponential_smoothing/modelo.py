@@ -46,14 +46,6 @@ def validacao_modelo(modelo, df):
     return test, previsao
 
 
-def previsao(modelo, df): 
-
-    modelo_previsao = modelo.fit()
-
-    previsao = modelo_previsao.forecast(9).astype(int)
-
-    return previsao
-
 
 def calculando_metricas(test, forecast):
     
@@ -70,19 +62,6 @@ def calculando_metricas(test, forecast):
     print(f"Raiz do Erro Quadrático Médio (RMSE): {rmse:.2f} crimes")
     print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
 
-def transformar_DataFrame(previsao): 
-
-    datas = pd.date_range(start='2026-04', end='2026-12', freq='MS')
-    previsao = previsao.values.flatten() #A previsão retorna uma matriz 2D por isso a função 
-
-    df_cvli = pd.DataFrame({
-    'MES': datas,
-    'CVLI': previsao 
-    })
-
-    df_cvli['MES'] = df_cvli['MES'].dt.to_period('M') # para ficar melhor apresentavel 
-    
-    return df_cvli
 
 def  test_Ljung_Box(modelo_ajustado): 
 
@@ -91,3 +70,33 @@ def  test_Ljung_Box(modelo_ajustado):
     resultado_lb = acorr_ljungbox(residuos, lags=[10], return_df=True)
 
     return resultado_lb
+
+
+def previsao_intervalo_confianca(modelo, df):
+
+    modelo_ajustado = modelo.fit()
+
+    previsao_df = modelo_ajustado.forecast(9)
+
+    simulacoes = modelo_ajustado.simulate(
+        nsimulations=9,
+        repetitions=1000,
+        error='mul'
+    )
+
+    indice_2026 = pd.date_range(start='2026-04-01', periods=9, freq='MS')
+
+    df_2026 = pd.DataFrame({
+        'CVLI'  : previsao_df.values.astype(int),
+        'lower' : np.percentile(simulacoes, 2.5,  axis=1).astype(int),
+        'upper' : np.percentile(simulacoes, 97.5, axis=1).astype(int),
+    }, index=indice_2026)
+
+    df_2026.index = df_2026.index.to_period('M')
+
+    return df_2026
+
+
+def transformar_DataFrame(previsao):
+    previsao.index = previsao.index.to_period('M')
+    return previsao

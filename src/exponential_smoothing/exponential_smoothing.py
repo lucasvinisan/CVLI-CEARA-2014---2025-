@@ -11,17 +11,16 @@ from src.exponential_smoothing import plots as grafico
 def executar_exponential_smoothing(df):
 
     modelo = es.modelo(df)
-
     test, forecast = es.validacao_modelo(modelo, df)
-
     grafico.plotar_validacao(df, test, forecast)
 
-    previsao = es.previsao(modelo, df)
 
-    previsao = es.transformar_DataFrame(previsao)
+    previsao = es.previsao_intervalo_confianca(modelo, df)
+    grafico.plotar_previsao_2026(previsao)
 
-    modelo_ajustado = modelo.fit() # O teste ljung Box necessita de um modelo ajustado
+    print(previsao)
     
+    modelo_ajustado = modelo.fit() # O teste ljung Box necessita de um modelo ajustado
     ljung_box = es.test_Ljung_Box(modelo_ajustado)
     
     print(ljung_box)

@@ -31,7 +31,7 @@ def executar_prophet(df):
 
     previsao = md.previsao_2026(forecast_2026)
 
-    grafico.ploat_previsao_2026(previsao)
+    grafico.plotar_previsao_2026(previsao)
 
     md.aplicando_cross_validation(modelo_final)
 

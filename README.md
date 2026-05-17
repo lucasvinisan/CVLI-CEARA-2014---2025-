@@ -10,19 +10,6 @@
 
 
 
-| Modelo                |  Consolidados (Jan - Mar)   | Melhor (Cenário) | Previsto (Abr - Dez)| Pior (Cenário)|Total (2026) Previsto |
-|-----------------------|--------|-------|-------|-------|-----|
-| Exponential Smoothing | 472 |- | 1255|- | 1727|  
-| Sarima                 |472 |- |1342| -| 1814 |  
-| Prophet               |472| 1326 |1982 |3593 |2454|
-
-```
- Total (2026) Previsto = Consolidados + Previsto
-```
-
-
-A divergência entre os modelos projetados e os dados históricos de 2025 sugere a influência de fatores sazonais e externos. Destaca-se que o ano de 2026 (o Ceará apresentou uma redução considerável no número de CVLI no priemiro trimestre). Além disso, sendo ano de pleito eleitoral para o Executivo Estadual, onde são intensificadas políticas de policiamento ostensivo, o que pode explicar a redução atípica observada no primeiro trimestre e a subsequente projeção de queda acentuada pelos modelos de suavização e séries temporais. 
-
 
 ## 📋 Introdução e Contextualização
 
@@ -91,7 +78,7 @@ analise_cvli_ceara/
   <img src="img/serie/distribuicao_dados_serie.jpeg" width="1200">
 </div>
 
-A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de CVLI estão distribuídas pelo Mes de ocorrência, pela variável CVLI que represnta a soma total de CVLI observado e pelas variáveis M (Masculino) e F (Feminino). A série histórica é composta, majoritariamente, por vítimas do sexo masculino; nota-se que o comportamento da curva de CVLI é quase integralmente ditado pela variação dos CVLI ocorrodos com vítimas do sexo masculino, dada a baixa representatividade estatística das ocorrências crimes contra pessoas do sexo feminino.
+A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de CVLI estão distribuídas pelo Mes, pela variável CVLI que represnta a soma total de CVLI (F + M) observado e pelas variáveis M (Masculino) e F (Feminino). A série histórica é composta, majoritariamente, por vítimas do sexo masculino; nota-se que o comportamento da curva de CVLI é quase integralmente ditado pela variação dos CVLI ocorrodos com vítimas do sexo masculino, dada a baixa representatividade estatística das ocorrências crimes contra pessoas do sexo feminino.
 
 
 ### Decomposição da Série Temporal 
@@ -133,12 +120,12 @@ A base de dados compreende 144 observações mensais (2014 a 2025). Os dados de 
 - pmdarima (v2.1.1)
 - numpy (v1.26.4)
 - joblib (v1.5.3)
-- Ambinete de Desenvolvimento (Visual Studio Code)
+- Ambiente de Desenvolvimento (Visual Studio Code)
 - Python Linguagem de Programação 
 
 ## 📈 Modelo SARIMA 
 
-Antes de aplicar o modelo SARIMA, é necessário verificar a estacionariedade da série temporal. Por conta disso, foi aplicado o teste Augmented Dickey-Fuller (ADF). Na primeira aplicação, observa-se um p-valor de aproximadamente 0.068, indicando que a série original é não-estacionária, com um nível de significância de 5%. Para ajustar esse comportamento, aplicou-se a técnica de diferenciação para remover a tendência. Após a implementação desse processo, o novo p-valor observado foi de $4.2128 \times 10^{-29}$. Como esse valor é significativamente inferior a 0.05, a série torna-se estacionária, estando apta para a modelagem.
+Antes de aplicar o modelo SARIMA é necessário verificar a estacionariedade da série temporal. Foi aplicado o teste Augmented Dickey-Fuller (ADF) na Série com intuito de verificar a série. Observpu-se um p-valor de aproximadamente 0.068, indicando que a série original é não-estacionária, com um nível de significância de 5%. Para ajustar esse comportamento, aplicou-se a técnica de diferenciação para remover a tendência modificando o d = 1 e D = 1 nos parêmetros do próprio modelo auto-arima. 
 
 
 <div align="center">
@@ -218,6 +205,16 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 - **p_valor**: como o valor de p-valor (0.768602
 ) é superior a 0.05, então  a hipotése nula deve ser considerada (Os resíduos são ruídos brancos). Ou seja, toda a informação útil foi extraida da base de dados e convertida e previsão. 
 
+### Previsão para (abril - Dezembro de 2026) 
+
+O modelo realizou a previsão com intervalo de confiança de 95% 
+
+
+<div align="center">
+  <img src="img/sarima/previsao_modelo_sarima.png" width="1200">
+</div>
+
+
 ## 📈 Exponential Smoothing
 
 ### Modelo Exponential Smoothing  
@@ -253,6 +250,18 @@ Nesse primeiro trimestre o estado do Ceará apresentou o menor número para prim
 
 - **p_valor**: como o valor de p-valor (0.471511) é superior a 0.05, então  a hipotése nula deve ser considerada (Os resíduos são ruídos brancos). Ou seja, toda a informação útil foi extraida da base de dados e convertida e previsão. 
 
+
+### Previsão para (abril - Dezembro de 2026) 
+
+O modelo realizou a previsão com intervalo de confiança de 95% 
+
+<div align="center">
+  <img src="img/exponential smoothing/previsao_intervalo_confianca.png" width="1200">
+</div>
+
+Quanto mais distante são as previsões maior é o nível de incerteza. Por conta disso, existe o aumento no intervalo de confiança observado.
+
+
 ## 📈 Prophet
 
 ### Modelo Prophet 
@@ -264,7 +273,7 @@ Modelo implementado no prophet
 
 ### Treinamento 
 
-Divisão treino e teste para validação do modelo implmentado 
+Divisão treino e teste para validação do modelo implementado 
 
 <div align="center">
   <img src="img/prophet/treino_teste.png" width="300">
@@ -286,7 +295,7 @@ Previsão do Modelo Prophet com intervalo de confiança de 95%
 
 ### Remoção dos anos de (2017 - 2019) 
 
-Eu decide remover os anos de 2017 a 2019 porque eles tinham uma alta variabilidade dos dados. Crises na Segurança pública e redução drasticas no número de CVLI. Esse valores estavam impactando de forma consideravel o desepenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
+Eu decide remover o intervalo de anos [2017 - 2019], porque eles tinham uma alta variabilidade dos dados. Entre os possíveis motivos são crises ocorridas no estado na segurança pública e alta variabilidade de CVLI. Esse valores estavam impactando de forma consideravel o desempenho do modelo. Além disso, foram adicinados os feriados nacionais para melhorar o desempenho final do modelo prophet. 
 
 <div align="center">
   <img src="img/prophet/removendo_dados.png" width="500">
@@ -304,9 +313,20 @@ Adicionando datas de feriados Nacionais para novos observação.
   <img src="img/prophet/removendo_anos_Cross_validation.png" width="500">
 </div>
 
-A remoção do intervalo correspondente aos anos de 2017 a 2019 justifica-se por uma quebra estrutural na série temporal (causada por fatores externos), que introduziu ruídos e distorceu os componentes de tendência e sazonalidade capturados pelo algoritmo original. No ano de 2017 o estado apresentou um ano com maior número de assassinatos na histório. Por outro lado, em 2019 o estado apresentou o ano com menor valor acumulado de CVLI em toda a série. Portando, a decisão de remover o modelo gerou ganhos noestudo como pode ser obervado na comparação dos dois modelos. 
+A remoção do intervalo correspondente aos anos de 2017 a 2019 justifica-se por uma quebra estrutural na série temporal (causada por fatores externos), que introduziu ruídos e distorceu os componentes de tendência e sazonalidade capturados pelo algoritmo original. No ano de 2017 o estado apresentou um ano com maior número de assassinatos na série. Por outro lado, em 2019 o estado apresentou reduções consideraveis nos acumaldos de CVLI, o que culminou no menor valor acumulado em toda a série. Portando, a decisão de remover o modelo gerou ganhos no estudo como pode ser obervado na comparação dos dois modelos. 
+
+
+### Previsão com intervalo de Confiança 
+
+Previsão do Modelo Prophet com intervalo de confiança de 95% 
+<div align="center">
+  <img src="img/prophet/previsa_removendo_dados.jpeg" width="1200">
+</div>
 
 ## 📊 Resultados
+
+
+Resultados obtidos na implementação dos modelos (Exponential Smoothing, Sarima e Prophet)
 
 | Modelo                |  MAPE  |  MAE  | RMSE | LB_STAT(Lag 10) | LB_pVALUE  |
 |-----------------------|--------|-------|-----|-----------------|------------|
@@ -317,15 +337,25 @@ A remoção do intervalo correspondente aos anos de 2017 a 2019 justifica-se por
 
 (~) -> Aproximado 
 
+Resultados das previsões do modelos
 
-✅ **Prophet (Modificado)** alcançou o menor MAPE (~11,46%) em média entre todos os modelos testados, superando o Exponential Smoothing (13,64%) e o SARIMA (15,17%), além de reduzir drasticamente o erro do Prophet original (~19,23%).
+| Modelo                |  Consolidados (Jan - Mar)   | Melhor (Cenário) | Previsto (Abr - Dez)| Pior (Cenário)|Total (2026) Previsto |
+|-----------------------|--------|-------|-------|-------|-----|
+| Exponential Smoothing | 472 |703| 1255|2026 | 1727|  
+| Sarima                 |472 |733 |1342| 2345| 1814 |  
+| Prophet               |472| 1326 |1982 |3593 |2454|
+| Prophet (Base Reduzida)  |472| 1376 |1987 |2615|2459|
+
+```
+ Total (2026) Previsto = Consolidados + Previsto
+```
+
+✅ **Prophet (Modificado)** alcançou o menor MAPE (~11,46%) em média entre todos os modelos testados, superando o Exponential Smoothing (13,64%) e o SARIMA (15,17%), além de reduzir drasticamente o erro do Prophet original (~19,23%). Embora a base de dados utilizada para aplicação do modelo foi reduzida.  
 
 Menor Erro Absoluto: O modelo também liderou nas métricas absolutas, registrando um MAE de 32,59 e um RMSE de 38,71. Isso significa que as suas previsões, em média, aproximam-se muito mais dos valores reais observados na série.
 
 
-## ▶️ Como reproduzir
-
-
+## ▶️ Como Reproduzir o Programa 
 ```
 
 ⏩ Executar a função Main()

@@ -16,15 +16,15 @@ def plotar_graficos_serie (df):
 
     #PLotando o gráfico com base no gênero 
     df[['F', 'M', 'CVLI']].plot(kind='line', ax=ax1)
-    ax1.set_title = ('Quantidade')  
+    ax1.set_title('Quantidade')  
     ax1.set_xlabel(None)
-    ax1.set_ylabel = ('Número de Casos')
+    ax1.set_ylabel('Número de Casos')
 
     #PLotando o gráfico das valores observados na série
     df_cvli = df['CVLI'].plot(kind='line', ax=ax2)
-    ax2.set_title = ('Homicidios no Estado do Ceará')
+    ax2.set_title('Homicidios no Estado do Ceará')
     ax2.set_xlabel(None)
-    ax2.set_ylabel = ('Meses')
+    ax2.set_ylabel('Meses')
 
     #Ajustando lyout
     plt.tight_layout()
@@ -63,7 +63,7 @@ def plotar_validacao(test, forecast, df):
     # MAPE: Erro percentual
     mape = np.mean(np.abs((test - forecast['CVLI']) / test)) * 100
 
-    ax1.set_title(f'Sarima — Teste vs Previsão\nMAE: {mae:.1f}  |  MAPE: {mape:.1f}% | RMSE: {rmse:.1f}%', fontsize=14, fontweight='bold')
+    ax1.set_title(f'Sarima — Teste vs Previsão\nMAE: {mae:.1f}  |  MAPE: {mape:.1f}% | RMSE: {rmse:.1f}', fontsize=14, fontweight='bold')
 
     
     ax1.set_xlabel('Data')
@@ -82,7 +82,7 @@ def modelo_diagnostico(modelo):
 # |------------ Decompondo a Série a Temporal (ADITIVA) --------------------------|
 def decomposicao_aditivo(df):
 
-    decomposicao_serie = seasonal_decompose(df['CVLI'], model='addmuitive', period=12)
+    decomposicao_serie = seasonal_decompose(df['CVLI'], model='additive', period=12)
     figure = decomposicao_serie.plot()
     figure.set_size_inches((12, 12))
     plt.tight_layout()
@@ -107,8 +107,42 @@ def tabela_comparacao(test, forecast):
 
 
 
+def plotar_previsao_2026(df_2026):
+    fig, ax = plt.subplots(figsize=(12, 5))
+
+    datas = df_2026.index
+
+    ax.plot(datas, df_2026['CVLI'], color='blue', marker='o', linewidth=1.5, label='Previsão')
+
+    ax.fill_between(
+        datas,
+        df_2026['lower'],
+        df_2026['upper'],
+        alpha=0.2,
+        color='blue',
+        label='IC 95%'
+    )
+
+    # Anotando previsão + intervalo em cada ponto
+    for i, (_, row) in enumerate(df_2026.iterrows()):
+        ax.annotate(
+            f"{row['CVLI']}\n[{row['lower']}–{row['upper']}]",
+            xy=(datas[i], row['CVLI']),
+            xytext=(0, 14),
+            textcoords='offset points',
+            ha='center',
+            fontsize=8,
+            color='black'
+        )
+
+    ax.set_title('Previsão CVLI (Sarima) — Abril a Dezembro 2026', fontsize=14, fontweight='bold')
+    ax.set_xlabel('MES')
+    ax.set_ylabel('CVLI')
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
 
 
 
-
-# |------------ PLot do arquivo exponential_smoothing.py --------------------------|

@@ -67,15 +67,18 @@ def validar_modelo_sarima(modelo, df):
 
 def previsao_modelo(modelo, df):
 
-    serie_completa = df['CVLI']
+    serie_log = np.log1p(df['CVLI'])
+    modelo.fit(serie_log)
 
-    modelo.fit(serie_completa)
-
-    previsao_2026 = modelo.predict(n_periods=9).astype(int)
+    previsao_2026, conf_intervalo = modelo.predict(n_periods=9, return_conf_int=True)
     
     indice_2026 = pd.date_range(start='2026-04-01', periods=9, freq='MS')
 
-    df_2026 = pd.DataFrame(previsao_2026, index=indice_2026, columns=['CVLI'])
+    df_2026 = pd.DataFrame({
+        'CVLI'  : np.expm1(previsao_2026).astype(int),
+        'lower' : np.expm1(conf_intervalo[:, 0]).astype(int),
+        'upper' : np.expm1(conf_intervalo[:, 1]).astype(int),
+    }, index=indice_2026)
 
     return df_2026
 

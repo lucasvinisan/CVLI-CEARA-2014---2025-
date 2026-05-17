@@ -10,15 +10,16 @@ def preparar_df(df):
     df_prophet = df[['CVLI']].copy().reset_index()
     df_prophet = df_prophet.rename(columns={'MES': 'ds', 'CVLI': 'y'})
     return df_prophet
-#Tem que modificar as colunas pois o prophet só reconhece ds e y 
+    #Tem que modificar as colunas pois o prophet só reconhece ds e y 
 
 
 def treinando_modelo(df_prophet): 
+    
     # Divisão treino/teste
     train = df_prophet[df_prophet['ds'] < '2024-01-01']
     test  = df_prophet[df_prophet['ds'] >= '2024-01-01']
     
-    # Treinar só com dados de treino
+    # Criar modelo para treinamento 
     m = Prophet(
         seasonality_mode='multiplicative',
         interval_width=0.95,
@@ -81,6 +82,7 @@ def previsao_2026(forecast):
     ][['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
 
     previsao_2026 = previsao_2026.copy()
+    
     previsao_2026['yhat']  = previsao_2026['yhat'].astype(int)
     previsao_2026['yhat_lower'] = previsao_2026['yhat_lower'].astype(int)
     previsao_2026['yhat_upper'] = previsao_2026['yhat_upper'].astype(int)

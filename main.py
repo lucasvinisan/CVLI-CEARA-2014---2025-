@@ -16,18 +16,14 @@ def executar():
     # |----- Aplicando modelos estatísticos -------|
 
     # Modelo exponential smoothing     
-    #previsao_exponential_smoothing = executar_exponential_smoothing(df)
+    previsao_exponential_smoothing = executar_exponential_smoothing(df)
 
     #Modelo Sarima
-    #previsao_sarima = executar_sarima(df)
+    previsao_sarima = executar_sarima(df)
 
     #Modelo prophet
     previsao_prophet = executar_prophet(df)
     
-    
-    #print(previsao_sarima)
-    #print(previsao_exponential_smoothing)
-    #print(previsao_prophet)
     
     # |-------- Salvando modelo geradas em arquivo do tipo .joblib -----------|
     
@@ -44,13 +40,13 @@ def executar():
     # |-------- Salvando previsões geradas em arquivo do tipo .csv-----------|
     
     # Modelo Exponential Smoothing 
-    #previsao_exponential_smoothing.to_csv('outputs/previsao_exponential_smoothing', index=False)
+    previsao_exponential_smoothing.to_csv('outputs/previsao_exponential_smoothing', index=False)
     
     # Modelo prophet 
-    # previsao_prophet.to_csv('outputs/previsao_prophet', index=False)
+    previsao_prophet.to_csv('outputs/previsao_prophet', index=False)
     
     # Modelo SARIMA
-    #previsao_sarima.to_csv('outputs/previsao_sarima', index=False)
+    previsao_sarima.to_csv('outputs/previsao_sarima', index=False)
 
 
 def abrir_dashboard():
@@ -64,5 +60,5 @@ def abrir_dashboard():
         print(f"Erro: O arquivo {caminho_html} não foi encontrado.")
     
 if __name__ == "__main__":
-    executar()
+    #executar()
     abrir_dashboard()

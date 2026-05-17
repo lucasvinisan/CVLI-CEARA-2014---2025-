@@ -47,3 +47,37 @@ def plotar_validacao(df, test, forecast):
     plt.tight_layout()
     plt.show()
 
+
+def plotar_previsao_2026(previsao):
+    fig, ax = plt.subplots(figsize=(12, 5))
+
+    ax.plot(previsao.index.to_timestamp(), previsao['CVLI'],
+            color='blue', marker='o', linewidth=1.5, label='Previsão')
+
+    ax.fill_between(
+        previsao.index.to_timestamp(),
+        previsao['lower'],
+        previsao['upper'],
+        alpha=0.2,
+        color='blue',
+        label='IC 95%'
+    )
+
+    for idx, row in previsao.iterrows():
+        ax.annotate(
+            f"{row['CVLI']}\n[{row['lower']}–{row['upper']}]",
+            xy=(idx.to_timestamp(), row['CVLI']),
+            xytext=(0, 12),
+            textcoords='offset points',
+            ha='center',
+            fontsize=8
+        )
+
+    ax.set_title('Previsão CVLI (Exponential Smoothing) — Abril a Dezembro 2026',
+                 fontsize=14, fontweight='bold')
+    ax.set_xlabel('MES')
+    ax.set_ylabel('CVLI')
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.show()
