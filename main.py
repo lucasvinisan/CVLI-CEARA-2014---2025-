@@ -28,13 +28,13 @@ def executar():
     # |-------- Salvando modelo geradas em arquivo do tipo .joblib -----------|
     
     # Modelo sarima
-    #joblib.dump(previsao_sarima, 'models/modelo_sarima.joblib')
+    joblib.dump(previsao_sarima, 'models/modelo_sarima.joblib')
     
     # Modelo Exponential Smoothing
-    #joblib.dump(previsao_exponential_smoothing, 'models/modelo_exponential_smoothing.joblib')
+    joblib.dump(previsao_exponential_smoothing, 'models/modelo_exponential_smoothing.joblib')
    
     # Modelo prophet 
-    #joblib.dump(previsao_prophet, 'models/modelo_previsao_prophet.joblib')
+    joblib.dump(previsao_prophet, 'models/modelo_previsao_prophet.joblib')
    
     
     # |-------- Salvando previsões geradas em arquivo do tipo .csv-----------|

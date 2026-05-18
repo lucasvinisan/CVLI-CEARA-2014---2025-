@@ -214,6 +214,7 @@ O modelo realizou a previsão com intervalo de confiança de 95%
   <img src="img/sarima/previsao_modelo_sarima.png" width="1200">
 </div>
 
+Quanto mais distante são as previsões maior é o nível de incerteza. Por conta disso existe o aumento no intervalo de confiança observado nas previsões.
 
 ## 📈 Exponential Smoothing
 
@@ -259,7 +260,7 @@ O modelo realizou a previsão com intervalo de confiança de 95%
   <img src="img/exponential smoothing/previsao_intervalo_confianca.png" width="1200">
 </div>
 
-Quanto mais distante são as previsões maior é o nível de incerteza. Por conta disso, existe o aumento no intervalo de confiança observado.
+Quanto mais distante são as previsões maior é o nível de incerteza. Por conta disso existe o aumento no intervalo de confiança observado nas previsões.
 
 
 ## 📈 Prophet
